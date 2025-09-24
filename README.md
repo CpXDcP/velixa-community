@@ -3,7 +3,7 @@ French below
 
 VELIXA-org
 
-Repository VELIXA by Didier Crupaux and Jonathan Culot
+Repository VELIXA by Didier Crupaux 
 
 🌐 Velixa Community
 
