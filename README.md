@@ -1,88 +1,135 @@
-# velixa-community
-OPEN SOURCE Version of Velixa - AI Governance
-# Velixa Community
+VELIXA-org
 
-**Velixa** est une plateforme **open source** de gouvernance de l’IA générative en entreprise.  
-Cette version *Community* est publiée sous licence **GNU Affero General Public License v3 (AGPLv3)**.
+Repository VELIXA par Didier Crupaux et Jonathan Culot
 
----
+🌐 Velixa Community
 
-## ✨ Fonctionnalités principales
+Velixa est une plateforme open source de gouvernance de l’IA générative en entreprise. Cette version Community est publiée sous licence GNU Affero General Public License v3 (AGPLv3).
 
-- **Filtrage et gouvernance des prompts**
-  - Application de règles de conformité (RGPD, NIS2, ISO 27001, HIPAA, confidentialité industrielle).
-  - Filtrage initial par **regex**, suivi d’une analyse contextuelle par **IA locale (Phi-3 Mini)**.
-  - Filtres personnalisés selon le métier et l’utilisateur.
+✨ Fonctionnalités principales
 
-- **Gestion des bots et agents**
-  - Prise en charge des **bots/agents locaux** et **externes (API)**.
-  - Contrôle des flux sortants et entrants selon les règles métier.
-  - Gestion des coûts liés aux utilisateurs et aux agents IA.
+Filtrage et gouvernance des prompts
 
-- **Sécurité et auditabilité**
-  - Journalisation complète des prompts, réponses et flux (y compris bots/agents locaux).
-  - Hashage SHA-256 des logs et prompts.
-  - Export CSV et PDF pour audit externe.
-  - Conformité légale et traçabilité.
+Application de règles de conformité : RGPD, NIS 2, ISO 27001, HIPAA (US), confidentialité industrielle, réglementations sectorielles (santé, éducation, finance).
 
-- **Administration**
-  - Interface web (inspirée d’Odoo) simple à utiliser.
-  - Gestion des métiers et application automatique des règles associées.
-  - Choix dynamique des IA et des API par métier ou utilisateur.
+Filtrage initial par expressions régulières (regex).
 
----
+Analyse contextuelle par une IA locale auditable sur son poids (Phi-3 Mini).
 
-## 📦 Architecture
+Règles dynamiques activables par métier et par utilisateur.
 
-- **Frontend** : HTML, CSS, JavaScript  
-- **Backend** : PHP (XAMPP-friendly, pas besoin de base de données lourde)  
-- **IA locale** : Phi-3 Mini (MIT, via Ollama)  
-- **Dépendances** :
-  - Dompdf (LGPL)
-  - Bootstrap / jQuery / Chart.js (MIT)
-  - Font Awesome (MIT/CC BY 4.0)
-  - Regex personnalisées (AGPLv3)
+Gestion des bots et agents
 
----
+Support des bots/agents locaux et des IA externes (API, SaaS, Cloud, on-premise).
 
-## 🔐 Licences
+Contrôle bidirectionnel des flux sortants et entrants.
 
-- Ce projet est publié sous **AGPLv3**.  
-- Les dépendances tierces sont listées dans [`/licenses/NOTICE.md`](licenses/NOTICE.md).  
-- Les empreintes cryptographiques sont disponibles dans [`/licenses/DEPENDENCIES.json`](licenses/DEPENDENCIES.json).
+Gestion des coûts liés aux utilisateurs, prompts et agents IA.
 
----
+Sécurité et auditabilité
 
-## 🚀 Roadmap
+Journalisation complète des prompts, réponses, et flux utilisateurs/bots.
 
-- **Community Edition** (cette version) :  
-  - Base open source (AGPLv3).  
-  - Gouvernance IA et conformité minimale.  
-  - Contribution ouverte via *pull requests*.  
+Hashage SHA-256 des journaux pour intégrité.
 
-- **Enterprise Edition** (future, commerciale) :  
-  - Installation clé en main (on-premise).  
-  - Connecteurs avancés (SIEM, SOC, AD/LDAP).  
-  - Modules premium (reporting avancé, formation, support, certification).  
+Export CSV et PDF pour audit externe.
 
----
+Alignement conformité légale et traçabilité (audit interne/externe).
 
-## 🤝 Contribution
+Administration
 
-1. Forkez le dépôt.  
-2. Créez une branche (`feature/ma-fonction`).  
-3. Committez vos changements.  
-4. Ouvrez une **pull request** → soumise à review.  
+Interface web inspirée d’Odoo : simple, moderne, responsive.
 
-Toutes les contributions doivent respecter :  
-- La licence **AGPLv3**.  
-- Les standards de conformité de Velixa (RGPD/NIS2/ISO).  
+Gestion centralisée des métiers avec application automatique des règles.
 
----
+Sélecteur dynamique des IA / API selon le contexte (métier, utilisateur).
 
-## 📧 Contact
+📦 Architecture
 
-Créateur : **Didier Crupaux**  
-Co-builder : **Jonathan Culot**  
-Organisation : [velixa-org](https://github.com/velixa-org)
+Frontend : HTML, CSS, JavaScript
 
+Backend : PHP (XAMPP-ready, pas de base SQL lourde → stockage JSON)
+
+IA locale : Phi-3 Mini (via Ollama)
+
+Sécurité intégrée : proxy de gouvernance, filtrage contextuel, traçabilité
+
+🛠️ Dépendances principales
+
+Phi-3 Mini (MIT License, via Ollama)
+
+Bootstrap (MIT)
+
+jQuery (MIT)
+
+Chart.js (MIT)
+
+Font Awesome (MIT / CC BY 4.0)
+
+Dompdf (LGPL-2.1)
+
+Regex personnalisées (AGPLv3)
+
+Export PDF/CSV intégré
+
+🔐 Licences
+
+Le projet principal est sous AGPLv3.
+
+Les dépendances tierces sont utilisées sous leurs licences respectives :
+
+MIT (Bootstrap, jQuery, Chart.js, Font Awesome, Phi-3 Mini via Ollama)
+
+LGPL (Dompdf)
+
+CC BY 4.0 (Font Awesome – icônes spécifiques)
+
+Les fichiers de référence :
+
+/licenses/NOTICE.md : résumé des licences.
+
+/licenses/DEPENDENCIES.json : empreintes cryptographiques et détails des dépendances.
+
+🚀 Roadmap Community Edition (cette version)
+
+Base open source (AGPLv3).
+
+Gouvernance IA et conformité minimale.
+
+Logs + auditabilité intégrée.
+
+Contributions ouvertes (pull requests).
+
+Enterprise Edition (future, commerciale)
+
+Déploiement clé en main (cloud ou on-premise).
+
+Connecteurs avancés : SIEM, SOC, AD/LDAP, Microsoft 365, SAP, ServiceNow.
+
+Modules premium : reporting avancé, support SLA, certification, formation.
+
+SaaS Velixa : hébergement EU, mises à jour automatiques, monitoring intégré.
+
+🤝 Contribution
+
+Forkez le dépôt.
+
+Créez une branche (feature/ma-fonction).
+
+Committez vos changements.
+
+Ouvrez une pull request → review par les mainteneurs.
+
+Toutes les contributions doivent respecter :
+
+La licence AGPLv3.
+
+Les standards de conformité Velixa (RGPD, NIS 2, ISO 27001, HIPAA).
+
+📧 Contact
+
+Créateur : Didier Crupaux Co-builder : Jonathan Culot
+
+🌍 Site : https://velixa.eu
+
+✉️ Email : velixa@proton.me
