@@ -4,7 +4,7 @@ French below
 NOTICE – Velixa Community
 
 Velixa Community
-Copyright (C) 2025 Didier Crupaux, Jonathan Culot
+Copyright (C) 2025 Didier Crupaux
 Published under the GNU Affero General Public License v3.0 (AGPLv3)
 
 📜 Main Project
