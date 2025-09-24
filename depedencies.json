@@ -1,0 +1,80 @@
+{
+  "project": "Resix / Velixa Community",
+  "license": "AGPL-3.0",
+  "environment": {
+    "php": "^7.1 || ^8.0",
+    "extensions_required": ["ext-dom", "ext-mbstring"]
+  },
+  "dependencies": [
+    {
+      "name": "dompdf/dompdf",
+      "version": "v3.1.0",
+      "license": "LGPL-2.1",
+      "author": "The Dompdf Community",
+      "artifact": "\\vendor\\dompdf\\dompdf\\src\\Dompdf.php",
+      "sha256": "13EB0904A5123B1CC9F853A46B0DC7D136CD0E7DC0E9F1365CFCA0C4C4EB9D0C",
+      "homepage": "https://github.com/dompdf/dompdf"
+    },
+    {
+      "name": "dompdf/php-font-lib",
+      "version": "1.0.1",
+      "license": "LGPL-2.1-or-later",
+      "author": "The FontLib Community",
+      "artifact": "\\vendor\\dompdf\\php-font-lib\\src\\FontLib\\Font.php",
+      "sha256": "1B7FA263EAB4B414F4C27BC2B10B298F2B89E95FA0E976A3C648C7D1D78C4504",
+      "homepage": "https://github.com/dompdf/php-font-lib"
+    },
+    {
+      "name": "dompdf/php-svg-lib",
+      "version": "1.0.0",
+      "license": "LGPL-3.0-or-later",
+      "author": "The SvgLib Community",
+      "artifact": "\\vendor\\dompdf\\php-svg-lib\\src\\Svg\\Document.php",
+      "sha256": "FDFB478AFFB8E74064EFB17C26E9C4572247A8D5205711E43DDAE7BBC438BE4B",
+      "homepage": "https://github.com/dompdf/php-svg-lib"
+    },
+    {
+      "name": "masterminds/html5",
+      "version": "2.9.0",
+      "license": "MIT",
+      "author": "Masterminds",
+      "artifact": "\\vendor\\masterminds\\html5\\src\\HTML5.php",
+      "sha256": "DA68D65548B18C39E6FAAE2732B4906494AFFDF983CE3DBFB35F19CAAC0EC719",
+      "homepage": "https://github.com/Masterminds/html5-php"
+    },
+    {
+      "name": "sabberworm/php-css-parser",
+      "version": "v8.9.0",
+      "license": "MIT",
+      "author": "Raphael Schweikert et al.",
+      "artifact": "\\vendor\\sabberworm\\php-css-parser\\src\\Parser.php",
+      "sha256": "6F8B9416C2DD386F4CD70AE580DE7DDBF6168C481858A300C3BC0DC498BC17AB",
+      "homepage": "https://github.com/MyIntervals/PHP-CSS-Parser"
+    },
+
+    /* ===== Dépendances externes non packagées (à installer côté client) ===== */
+
+    {
+      "name": "Phi-3 Mini (via Ollama)",
+      "version": "mini-4k-instruct",
+      "license": "MIT",
+      "author": "Microsoft",
+      "distribution": "external",
+      "download_url": "https://ollama.com/library/phi3",
+      "install_hint": "Installer Ollama puis: `ollama run phi3:mini-4k-instruct`",
+      "sha256": "",
+      "notes": "Modèle non distribué dans ce dépôt; requis pour l'analyse locale des prompts."
+    },
+    {
+      "name": "Tesseract OCR",
+      "version": ">=5",
+      "license": "Apache-2.0",
+      "author": "The Tesseract OCR Project",
+      "distribution": "external-optional",
+      "download_url": "https://github.com/tesseract-ocr/tesseract",
+      "install_hint": "Installer Tesseract et s'assurer que `tesseract` est dans le PATH. Langues à ajouter si besoin (fra, eng...).",
+      "sha256": "",
+      "notes": "Dépendance prévue pour la fonctionnalité OCR à venir (analyse de documents)."
+    }
+  ]
+}
