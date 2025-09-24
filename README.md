@@ -283,8 +283,8 @@ Les standards de conformité Velixa (RGPD, NIS 2, ISO 27001, HIPAA).
 
 📧 Contact
 
-Créateur : Didier Crupaux
-Co-builder : Jonathan Culot
+Créateur - propriétaire de l'idée : Didier Crupaux
+Co-créateur : Jonathan Culot
 
 🌍 Site : https://velixa.eu
 
