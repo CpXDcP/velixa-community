@@ -56,10 +56,11 @@ LoadModule ssl_module modules/mod_ssl.so
 Include conf/extra/httpd-ssl.conf  
 
 #### 3.2 Générer certificat auto-signé
+winget install FiloSottile.mkcert
 mkcert -install  
 mkcert localhost 127.0.0.1 ::1  
 
-Placer les fichiers générés :  
+Placer les fichiers générés (les fichiers se trouvent dans le dossier où la commande a été lancée ) (renommer les fichiers si besoin) :  
 C:\xampp\apache\conf\ssl.crt\resix.crt  
 C:\xampp\apache\conf\ssl.key\resix.key  
 
@@ -80,7 +81,8 @@ Dans `httpd-ssl.conf` :
 </VirtualHost>  
 
 #### 3.4 Vérification
-- Navigateur → `https://localhost/resix/index.php` → cadenas 🔒  
+- Démarrer le serveur Apache
+- Navigateur → `https://localhost/resix/index.php` → cliquer sur accepter le risque et continuer : (certificat ssl configuré mais venant d'une source non-officielle, auto-signé)  
 - CLI : `curl -I https://localhost/resix/index.php`  
 
 ---
@@ -88,10 +90,10 @@ Dans `httpd-ssl.conf` :
 ### 4) Connexion administrateur
 - URL : `https://localhost/resix/index.php`  
 - Identifiants par défaut :  
-  - **Login** : dom  
-  - **Mot de passe** : dom  
+  - **Login** : admin  
+  - **Mot de passe** : Administrateur@1
 
-⚠️ Changez immédiatement ce mot de passe (`manage_users.php`).  
+⚠️ Changez immédiatement ce mot de passe comme indiqué et activer la MFA (cela se fait automatiquement à la première connexion) 
 
 ---
 
@@ -134,6 +136,10 @@ Configurer `config_api.json` :
   "api_key": "VOTRE_CLE_API",  
   "base_url": "https://api.openai.com/v1/"  
 }  
+Exemple : Après avoir généré la clé API Groq suiver les étapes des image ci-dessous:
+![Capture d’écran](./images/capture1.png) ![Capture d’écran](./images/capture2.png)
+![Capture d’écran](./images/capture3.png)
+
 
 #### 7.2 IA locale (Phi-3-mini)
 ⚠️ Phi-3-mini est utilisée **uniquement pour l’analyse contextuelle préalable**.  
@@ -287,8 +293,8 @@ Enable SSL in `httpd.conf`, generate certs with mkcert, configure `httpd-ssl.con
 
 ### 4) Admin Login
 - URL: `https://localhost/resix/index.php`  
-- Default: login `dom`, password `dom`  
-- ⚠️ Change immediately.  
+- Default: login `admin`, password `administrateur@1`  
+- ⚠️ Change immediately.  And activate MFA
 
 ---
 

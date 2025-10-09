@@ -10,9 +10,7 @@ Cette feuille de route détaille les améliorations à apporter à Velixa pour p
 ---
 
 ### Court terme (1-3 mois)
-- 🔐 **Gestion des mots de passe**
-  - Implémenter un hash fort (BCrypt, Argon2)
-  - Forcer le changement du mot de passe admin par défaut au premier login
+
 
 - 📜 **Logs**
   - Ajouter signature numérique (HMAC ou clé privée) pour garantir l’intégrité
@@ -63,9 +61,7 @@ This roadmap outlines the improvements required to move Velixa from its current 
 ---
 
 ### Short term (1-3 months)
-- 🔐 **Password management**
-  - Implement strong hashing (BCrypt, Argon2)
-  - Force admin password change on first login
+
 
 - 📜 **Logs**
   - Add digital signatures (HMAC/private key) for tamper-proof logging
