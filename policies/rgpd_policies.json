@@ -1,0 +1,64 @@
+{
+  "rgpd_policies": [
+    {
+      "id": "rgpd.personal_identifiers",
+      "title": "Identifiants personnels (PII)",
+      "description": "Détection d'identifiants personnels non anonymisés.",
+      "prompt_template": "SYSTEM: JSON MINIFIÉ, une ligne. \"violation\" booléen. Si incertain -> violation:true (posture conservative).\nUSER: Règle: Interdire les identifiants personnels non anonymisés (emails, téléphones, adresses IP, identifiants officiels). Analyse le texte et indique si au moins un identifiant personnel non anonymisé est présent.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"rgpd.personal_identifiers\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    },
+    {
+      "id": "rgpd.contact_details",
+      "title": "Coordonnées directes",
+      "description": "Bloquer coordonnées non anonymisées.",
+      "prompt_template": "SYSTEM: JSON MINIFIÉ, une ligne. Si incertain -> violation:true.\nUSER: Règle: Interdire emails, téléphones, adresses postales non anonymisés.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"rgpd.contact_details\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.special_categories",
+      "title": "Catégories particulières Art.9 RGPD",
+      "description": "Données de santé, santé mentale, situation sociale sensible.",
+      "prompt_template": "SYSTEM: JSON MINIFIÉ UNIQUEMENT, une ligne. \"violation\" = true/false. Sois TRÈS STRICT et CONSERVATEUR : en cas de doute, mets violation:true. Ces données sont ultra-sensibles.\nUSER: Règle RGPD Art.9 — Interdire STRICTEMENT toute mention de données relevant des catégories spéciales, même implicitement: santé physique, santé mentale (dépression, anxiété, burnout, stress, thérapie...), situation sociale difficile (difficultés financières, logement, licenciement + état psychologique), traitements médicaux, handicap, addiction. La présence de ces éléments dans un contexte professionnel (RH, management) est une violation GRAVE. Si le texte mentionne la santé ou la situation personnelle difficile d'une personne, même sans la nommer, c'est une violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRetour (une ligne): {\"rule\":\"rgpd.special_categories\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    },
+    {
+      "id": "rgpd.data_minimization",
+      "title": "Minimisation des données",
+      "description": "Données excessives par rapport à la finalité.",
+      "prompt_template": "SYSTEM: JSON MINIFIÉ. \"violation\" = true/false. Si incertain -> violation:false.\nUSER: Règle: Détecter si des données superflues sont présentes par rapport à la finalité apparente.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nJSON: {\"rule\":\"rgpd.data_minimization\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.pseudonymization_anonymization",
+      "title": "Pseudonymisation manquante",
+      "description": "Identifiants directs sans masquage.",
+      "prompt_template": "SYSTEM: JSON SEUL. \"violation\" booléen. Si incertain -> violation:false.\nUSER: Règle: Si un identifiant direct apparaît sans masquage -> violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"rgpd.pseudonymization_anonymization\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.online_identifiers",
+      "title": "Identifiants en ligne",
+      "description": "IP, cookies, ID appareil.",
+      "prompt_template": "SYSTEM: JSON MINIFIÉ. Si incertain -> violation:false.\nUSER: Règle: IP complètes, cookies/session ID, ID appareil doivent être anonymisés.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"rgpd.online_identifiers\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.financial_identifiers",
+      "title": "Identifiants financiers",
+      "description": "IBAN, PAN non masqués.",
+      "prompt_template": "SYSTEM: JSON STRICT. Si incertain -> violation:false.\nUSER: Règle: IBAN/numéros financiers non masqués -> violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"rgpd.financial_identifiers\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.children_data",
+      "title": "Données de mineurs",
+      "description": "Données identifiantes d'enfants.",
+      "prompt_template": "SYSTEM: JSON STRICT. Si incertain -> violation:false.\nUSER: Règle: Infos identifiantes d'un mineur sans base légale -> violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nJSON: {\"rule\":\"rgpd.children_data\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.images_faces",
+      "title": "Images identifiantes",
+      "description": "Visages sans base légale.",
+      "prompt_template": "SYSTEM: JSON UNIQUEMENT. Si incertain -> violation:false.\nUSER: Règle: Médias avec visages identifiables sans base légale -> violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"rgpd.images_faces\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    },
+    {
+      "id": "rgpd.transparency_fairness",
+      "title": "Transparence",
+      "description": "Traitement opaque.",
+      "prompt_template": "SYSTEM: JSON MINIFIÉ. Si incertain -> violation:false.\nUSER: Règle: Absence d'information sur la finalité/base légale quand le texte prétend informer sur un traitement -> violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nJSON: {\"rule\":\"rgpd.transparency_fairness\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[]}"
+    }
+  ]
+}

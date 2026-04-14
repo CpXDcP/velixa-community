@@ -1,0 +1,10 @@
+{
+  "finance_policies": [
+    {
+      "id": "finance.iban_or_pan",
+      "title": "IBAN / carte bancaire non masqués",
+      "description": "Finance — interdire IBAN/PAN non masqués.",
+      "prompt_template": "SYSTEM: JSON minifié, pas de texte autour.\nUSER: Règle: Interdire IBAN/numéro de carte non masqués (ex: BE.., FR.., 16 chiffres). Les versions masquées (****) sont ok.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"finance.iban_or_pan\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    }
+  ]
+}

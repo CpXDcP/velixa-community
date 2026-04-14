@@ -1,0 +1,12 @@
+inc/.provider_master.key
+inc/secrets_providers.json
+config/secrets_providers.json
+config/directory_connectors.json
+users.json
+logs/
+data/
+uploads/
+*.log
+.env
+Thumbs.db
+.DS_Store

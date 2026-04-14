@@ -1,0 +1,10 @@
+{
+  "hr_policies": [
+    {
+      "id": "hr.identifiable_employee",
+      "title": "Données RH sensibles d'un employé",
+      "description": "Bloquer toute donnée personnelle ou confidentielle liée à la situation d'un employé.",
+      "prompt_template": "SYSTEM: JSON minifié, une ligne. \"violation\" = true ou false. Sois STRICT : en cas de doute, mets violation:true.\nUSER: Règle: Signaler si le texte traite de la situation personnelle, médicale, financière ou professionnelle d'un employé ou collaborateur, même sans le nommer. Cela inclut: licenciement, période de préavis, difficultés personnelles, situation financière, problèmes de santé, entretiens confidentiels, évaluations. L'intention de communiquer ces informations à la hiérarchie est une violation grave de la confidentialité RH.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nJSON: {\"rule\":\"hr.identifiable_employee\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    }
+  ]
+}

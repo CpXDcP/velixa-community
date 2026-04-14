@@ -1,0 +1,158 @@
+{
+    "IT": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "RH": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "Direction": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "Marketing": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "Juridique": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "Soins de sant\u00e9": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "Finance": [
+        "rgpd",
+        "iso27001",
+        "finance"
+    ],
+    "Comptabilit\u00e9": [
+        "rgpd",
+        "iso27001",
+        "finance"
+    ],
+    "Achats": [
+        "rgpd",
+        "finance"
+    ],
+    "Logistique": [
+        "rgpd",
+        "iso27001"
+    ],
+    "Support IT": [
+        "rgpd",
+        "nis2",
+        "iso27001"
+    ],
+    "Technicien r\u00e9seau": [
+        "rgpd",
+        "iso27001"
+    ],
+    "D\u00e9veloppeur": [
+        "rgpd",
+        "nis2",
+        "iso27001"
+    ],
+    "Pharmacien": [
+        "rgpd",
+        "hipaa",
+        "donnees_sante"
+    ],
+    "M\u00e9decin": [
+        "rgpd",
+        "hipaa",
+        "donnees_sante"
+    ],
+    "Infirmier": [
+        "rgpd",
+        "hipaa",
+        "donnees_sante"
+    ],
+    "Enseignement": [
+        "rgpd",
+        "confidentialite_rh"
+    ],
+    "Juriste RGPD": [
+        "rgpd",
+        "confidentialite_legale"
+    ],
+    "Avocat interne": [
+        "rgpd",
+        "confidentialite_legale"
+    ],
+    "Chef de projet": [
+        "rgpd",
+        "iso27001",
+        "confidentialite_rh"
+    ],
+    "Responsable s\u00e9curit\u00e9": [
+        "rgpd",
+        "nis2",
+        "iso27001"
+    ],
+    "Consultant externe": [
+        "rgpd",
+        "confidentialite_legale"
+    ],
+    "Ressources internes": [
+        "rgpd",
+        "confidentialite_rh"
+    ],
+    "Data Analyst": [
+        "rgpd",
+        "iso27001"
+    ],
+    "Commercial": [
+        "rgpd",
+        "nis2",
+        "iso27001",
+        "hipaa",
+        "confidentialite_rh",
+        "finance",
+        "confidentialite_legale",
+        "donnees_sante"
+    ],
+    "Auditeur interne": [
+        "rgpd",
+        "nis2",
+        "iso27001"
+    ]
+}

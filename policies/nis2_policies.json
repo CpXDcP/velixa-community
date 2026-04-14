@@ -1,0 +1,16 @@
+{
+  "nis2_policies": [
+    {
+      "id": "nis2.cyber_keywords",
+      "title": "Mots-clés cybersécurité à risque",
+      "description": "NIS2 — ne pas pousser des infos opérationnelles critiques sans contexte.",
+      "prompt_template": "SYSTEM: JSON minifié UNIQUEMENT.\nUSER: Règle: Si le texte contient des éléments opérationnels sensibles (admin, root, MFA, désactivation MFA, faille, intrusion, CVE, exploit, VPN, firewall, SIEM, EDR) susceptibles d'exposer la posture sécurité, signaler.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nJSON: {\"rule\":\"nis2.cyber_keywords\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    },
+    {
+      "id": "nis2.config_disclosure",
+      "title": "Divulgation de configuration sensible",
+      "description": "NIS2 — filtrer export de config, versions détaillées, chemins, endpoints internes.",
+      "prompt_template": "SYSTEM: JSON minifié UNIQUEMENT.\nUSER: Règle: Interdire divulgation de configurations réseau/sécurité (exports de config, versions exactes, chemins d'installation, endpoints internes non publics) sans base légitime.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"nis2.config_disclosure\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    }
+  ]
+}
