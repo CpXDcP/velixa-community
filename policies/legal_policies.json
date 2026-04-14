@@ -1,0 +1,10 @@
+{
+  "legal_policies": [
+    {
+      "id": "legal.confidential_contract",
+      "title": "Violation de confidentialité / secret professionnel",
+      "description": "Bloquer toute demande exploitant des informations obtenues confidentiellement.",
+      "prompt_template": "SYSTEM: JSON ONLY, une ligne. \"violation\" = true ou false. Sois STRICT : en cas de doute, mets violation:true.\nUSER: Règle: Signaler si le texte demande d'utiliser ou de divulguer des informations obtenues lors d'un entretien confidentiel, d'une conversation privée, ou relevant du secret professionnel. Cela inclut: informations confiées par un employé, données obtenues en contexte d'entretien RH, situations personnelles partagées en confiance. Le fait de vouloir communiquer ces données à d'autres personnes (hiérarchie, collègues) constitue une violation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nSortie: {\"rule\":\"legal.confidential_contract\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    }
+  ]
+}

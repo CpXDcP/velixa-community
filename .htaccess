@@ -1,0 +1,17 @@
+Options -Indexes
+ServerSignature Off
+
+# Bloquer accès direct aux fichiers sensibles
+<FilesMatch "\.(json|key|log|ndjson|csv|pyc|py|md|lock)$">
+    Require all denied
+</FilesMatch>
+
+# Autoriser active_rules.json (lu par JS frontend si besoin)
+# <FilesMatch "^active_rules\.json$">
+#     Require all granted
+# </FilesMatch>
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=308]

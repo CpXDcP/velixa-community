@@ -1,0 +1,10 @@
+{
+  "health_policies": [
+    {
+      "id": "health.critical_diseases",
+      "title": "Données de santé sensibles",
+      "description": "Blocage de toute mention de santé physique ou mentale liée à une personne.",
+      "prompt_template": "SYSTEM: JSON UNIQUEMENT (minifié, une ligne). \"violation\" doit être true ou false. Sois STRICT et CONSERVATEUR : en cas de doute, mets violation:true.\nUSER: Règle: Signaler si le texte mentionne des informations de santé (physique OU mentale) concernant une personne, même sans la nommer explicitement. Cela inclut: maladies (dépression, cancer, anxiété, burnout, addiction...), traitements médicaux ou psychiatriques, hospitalisations, ordonnances, handicaps, difficultés psychologiques, thérapies. Le contexte professionnel (RH, médical) ne justifie pas la divulgation.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"health.critical_diseases\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    }
+  ]
+}

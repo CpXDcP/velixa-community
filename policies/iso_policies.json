@@ -1,0 +1,16 @@
+{
+  "iso_policies": [
+    {
+      "id": "iso.ip_exposure",
+      "title": "Exposition d’adresses IP complètes",
+      "description": "ISO 27001 — éviter de partager des IP complètes non anonymisées.",
+      "prompt_template": "SYSTEM: Réponds STRICTEMENT en JSON valide, une seule ligne, sans markdown ni texte autour. Si incertain -> {\"violation\":false}.\nUSER: Règle: Interdire les adresses IP complètes non anonymisées (ex: 10.1.2.3, 192.168.1.24, adresses publiques). Les IP partiellement masquées (ex: 192.168.***.***) sont acceptables.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse EXACTE: {\"rule\":\"iso.ip_exposure\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    },
+    {
+      "id": "iso.secrets_in_prompt",
+      "title": "Fuite de secrets/identifiants",
+      "description": "ISO 27001 — éviter de divulguer mots de passe, clés API, tokens.",
+      "prompt_template": "SYSTEM: JSON UNIQUEMENT (minifié). Si incertain -> violation=false.\nUSER: Règle: Interdire le partage de secrets (mots de passe, clés API/tokens, chaînes d'accès DB, clés SSH), même partiellement lisibles.\nTexte:\n\"\"\"\n{USER_TEXT}\n\"\"\"\nRéponse: {\"rule\":\"iso.secrets_in_prompt\",\"violation\":true|false,\"reason\":\"court\",\"snippets\":[\"extrait ou vide\"]}"
+    }
+  ]
+}
