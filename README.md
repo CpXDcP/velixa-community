@@ -1,308 +1,160 @@
-French below
+# ![Velixa](assets/velixa-logo.png)
 
+# Velixa for Gen AI — Community Edition
 
-VELIXA-org
+**Governing AI with Confidence**
 
-Repository VELIXA by Didier Crupaux 
+[![Licence AGPL v3](https://img.shields.io/badge/Licence-AGPL%20v3-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)](https://github.com/CpXDcP/velixa-community/releases)
+[![PHP](https://img.shields.io/badge/PHP-8.1%2B-purple.svg)](https://php.net)
+[![Ollama](https://img.shields.io/badge/Ollama-phi3%3Amini-orange.svg)](https://ollama.com)
 
-🌐 Velixa Community
+---
 
-Velixa is an open-source platform for governance of generative AI in enterprises.
-This Community Edition is released under the GNU Affero General Public License v3 (AGPLv3).
+## Qu'est-ce que Velixa for Gen AI ?
 
-✨ Key Features
+Velixa for Gen AI est une solution de **gouvernance IA on-premise**, déployable en quelques heures, sans cloud, sans abonnement, compatible air-gap total.
 
-Prompt filtering and governance
+Elle s'intercale entre vos utilisateurs et les LLM externes (Groq, OpenAI, Anthropic, Gemini) pour analyser, bloquer et éduquer — sans jamais envoyer vos données vers des tiers non autorisés.
+
+> **Modèle Open Core** — Ce dépôt contient le socle Community, open-source sous licence AGPL v3, gratuit pour toujours. Des modules Enterprise sont disponibles séparément pour les organisations ayant des besoins avancés.
 
-Compliance rules enforcement: GDPR, NIS 2, ISO 27001, HIPAA (US), industrial confidentiality, and sector-specific regulations (health, education, finance).
+---
 
-Initial filtering through regular expressions (regex).
+## Fonctionnalités Community v1.1.0
 
-Contextual analysis via a local, auditable AI model (Phi-3 Mini).
+| Fonctionnalité | Description |
+|---|---|
+| 🛡️ **Pipeline de blocage** | Détection et blocage des prompts non-conformes |
+| 📊 **Score de criticité** | Score 0-100 pour chaque prompt analysé |
+| 🎓 **Explication pédagogique** | Éduquer plutôt que sanctionner — explication réglementaire claire |
+| ✍️ **Réécriture conforme** | phi3:mini réécrit le prompt bloqué sans les données sensibles |
+| 🔌 **Multi-providers** | Groq, OpenAI, Anthropic, Gemini — votre choix |
+| 🌐 **Traduction confidentielle** | Traduction locale via phi3:mini — données jamais envoyées |
+| 📈 **Graphiques board** | Tableaux de bord pour la direction |
+| 📄 **Export PDF logs** | Export des journaux de conformité |
+| 👁️ **HITL** | Human In The Loop — approbation humaine (pay-per-use) |
+| ✅ **Consentement IA tracé** | Charte d'usage IA avec consentement enregistré |
+| 👥 **Gestion utilisateurs** | Utilisateurs locaux + MFA TOTP |
+| 🗑️ **Droit à l'oubli** | RGPD Art.17 — purge ciblée via CLI |
 
-Dynamic rule activation by role and user.
+---
 
-Bot and agent management
+## Prérequis
 
-Support for local bots/agents and external AI (API, SaaS, Cloud, on-premise).
+- **PHP 8.1+** avec extensions : `curl`, `openssl`, `mbstring`, `fileinfo`, `zip`
+- **Apache / XAMPP** 2.4+
+- **Ollama** + modèle **phi3:mini** (2.2 GB)
+- **Python 3.10+** *(optionnel — analyse fichiers PDF/DOCX)*
+- Une clé API LLM externe *(Groq gratuit recommandé pour démarrer)*
 
-Bidirectional control of outbound and inbound flows.
+---
 
-Cost management related to users, prompts, and AI agents.
+## Installation rapide
 
-Security and auditability
+```bash
+# 1. Cloner le dépôt
+git clone https://github.com/CpXDcP/velixa-community.git
 
-Full logging of prompts, responses, and user/bot flows.
+# 2. Copier dans votre répertoire web
+# Windows : C:\xampp\htdocs\velixa\
+# Linux   : /var/www/html/velixa/
 
-SHA-256 hashing of logs to ensure integrity.
+# 3. Copier les fichiers de config exemple
+cp config/providers.json.example config/providers.json
+cp users.json.example users.json
 
-CSV and PDF export for external audits.
+# 4. Installer Ollama et phi3:mini
+ollama pull phi3:mini
 
-Legal compliance and traceability alignment (internal/external audit).
+# 5. Ouvrir dans le navigateur
+# http://localhost/velixa
+# Login : admin / password (changement forcé à la première connexion)
+```
 
-Administration
+👉 **Voir [INSTALL.md](INSTALL.md) pour le guide complet étape par étape.**
 
-Web interface inspired by Odoo: simple, modern, responsive.
+---
 
-Centralized role-based rule management.
+## Architecture
 
-Dynamic AI/API selector based on role and context.
+```
+Utilisateur
+    │
+    ▼
+interface_user.php
+    │
+    ▼
+rules_runner.php ──── security_pipeline.php
+    │                        │
+    │                   phi3:mini (local)
+    │                   Ollama 127.0.0.1:11434
+    │
+    ▼
+LLM externe au choix
+(Groq / OpenAI / Anthropic / Gemini)
+```
 
-📦 Architecture
+**Aucune donnée ne transite sans analyse préalable.**  
+**phi3:mini fonctionne 100% en local — vos documents ne quittent jamais votre infrastructure.**
 
-Frontend: HTML, CSS, JavaScript
+---
 
-Backend: PHP (XAMPP-ready, lightweight JSON storage – no heavy SQL DB)
+## Modèle Open Core
 
-Local AI: Phi-3 Mini (via Ollama)
+| Fonctionnalité | Community (gratuit) | Enterprise |
+|---|---|---|
+| Pipeline de blocage complet | ✅ | ✅ |
+| Score criticité + explication | ✅ | ✅ |
+| Réécriture conforme phi3 | ✅ | ✅ |
+| Traduction confidentielle | ✅ | ✅ |
+| HITL pay-per-use | ✅ | ✅ illimité |
+| Tokenisation PII réversible | ❌ | ✅ |
+| Outils métier phi3 avancés | ❌ | ✅ |
+| LDAP / Active Directory | ❌ | ✅ |
+| Legal Hold SHA256 | ❌ | ✅ |
+| Rapport EU AI Act PDF | ❌ | ✅ |
+| Multi-tenant | ❌ | ✅ |
+| Support dédié + SLA | ❌ | ✅ |
 
-Security: governance proxy, contextual filtering, traceability
+---
 
-🛠️ Main Dependencies
+## Conformité réglementaire
 
-Phi-3 Mini (MIT License, via Ollama)
+Velixa for Gen AI Community adresse :
 
-Bootstrap (MIT)
+- **RGPD** — Art.5 (minimisation), Art.17 (droit à l'oubli), Art.32 (sécurité)
+- **NIS2** — Art.21 (gestion des risques), détection prompt injection
+- **EU AI Act** — Art.5 (pratiques interdites / jailbreak), Art.14 (supervision humaine / HITL), Art.52 (transparence / consentement)
 
-jQuery (MIT)
+---
 
-Chart.js (MIT)
+## Licence
 
-Font Awesome (MIT / CC BY 4.0)
+Velixa for Gen AI Community est distribué sous licence **GNU Affero General Public License v3 (AGPL v3)**.
 
-Dompdf (LGPL-2.1)
+Le code source est auditable, modifiable et redistribuable librement selon les termes de cette licence.  
+Voir [LICENSE](LICENSE) pour les détails complets.
 
-Custom regex (AGPLv3)
+---
 
-Integrated CSV/PDF export
+## Contribuer
 
-🔐 Licenses
+Les contributions sont les bienvenues — bugs, améliorations, règles sectorielles, traductions.
 
-The main project is licensed under AGPLv3.
+1. Fork le dépôt
+2. Créer une branche (`git checkout -b feature/ma-feature`)
+3. Commit (`git commit -m 'Ajout ma feature'`)
+4. Push (`git push origin feature/ma-feature`)
+5. Ouvrir une Pull Request
 
-Third-party dependencies are used under their respective licenses:
+---
 
-MIT (Bootstrap, jQuery, Chart.js, Font Awesome, Phi-3 Mini via Ollama)
+## Support
 
-LGPL (Dompdf, FontLib, SvgLib)
+- **Community** : [Issues GitHub](https://github.com/CpXDcP/velixa-community/issues)
+- **Enterprise** : Contactez-nous pour le support dédié et le SLA contractuel
 
-CC BY 4.0 (Font Awesome – specific icons)
+---
 
-Apache-2.0 (Tesseract OCR, upcoming OCR module)
-
-📄 References:
-
-/licenses/NOTICE.md
-: license summary and attributions.
-
-/licenses/DEPENDENCIES.json
-: dependency details with cryptographic hashes.
-
-/licenses/LICENSES_FULL.md
-: full license texts.
-
-🚀 Roadmap – Community Edition (this version)
-
-Open source base (AGPLv3).
-
-AI governance and minimal compliance.
-
-Built-in logging and auditability.
-
-Open contributions (pull requests).
-
-Enterprise Edition (future, commercial)
-
-Turnkey deployment (cloud or on-premise).
-
-Advanced connectors: SIEM, SOC, AD/LDAP, Microsoft 365, SAP, ServiceNow.
-
-Premium modules: advanced reporting, SLA support, certification, training.
-
-Velixa SaaS: EU hosting, automatic updates, integrated monitoring.
-
-🤝 Contribution
-
-Fork the repository.
-
-Create a branch (feature/my-feature).
-
-Commit your changes.
-
-Open a pull request → reviewed by maintainers.
-
-All contributions must comply with:
-
-The AGPLv3 license.
-
-Velixa compliance standards (GDPR, NIS 2, ISO 27001, HIPAA).
-
-📧 Contact
-
-Creator: Didier Crupaux
-
-Co-builder: Jonathan Culot
-
-🌍 Website: https://velixa.eu
-
-✉️ Email: velixa@proton.me
-
-
-
-VELIXA-org
-
-Repository VELIXA par Didier Crupaux et Jonathan Culot
-
-🌐 Velixa Community
-
-Velixa est une plateforme open source de gouvernance de l’IA générative en entreprise.
-Cette version Community est publiée sous licence GNU Affero General Public License v3 (AGPLv3).
-
-✨ Fonctionnalités principales
-
-Filtrage et gouvernance des prompts
-
-Application de règles de conformité : RGPD, NIS 2, ISO 27001, HIPAA (US), confidentialité industrielle, réglementations sectorielles (santé, éducation, finance).
-
-Filtrage initial par expressions régulières (regex).
-
-Analyse contextuelle par une IA locale auditable sur son poids (Phi-3 Mini).
-
-Règles dynamiques activables par métier et par utilisateur.
-
-Gestion des bots et agents
-
-Support des bots/agents locaux et des IA externes (API, SaaS, Cloud, on-premise).
-
-Contrôle bidirectionnel des flux sortants et entrants.
-
-Gestion des coûts liés aux utilisateurs, prompts et agents IA.
-
-Sécurité et auditabilité
-
-Journalisation complète des prompts, réponses, et flux utilisateurs/bots.
-
-Hashage SHA-256 des journaux pour intégrité.
-
-Export CSV et PDF pour audit externe.
-
-Alignement conformité légale et traçabilité (audit interne/externe).
-
-Administration
-
-Interface web inspirée d’Odoo : simple, moderne, responsive.
-
-Gestion centralisée des métiers avec application automatique des règles.
-
-Sélecteur dynamique des IA / API selon le contexte (métier, utilisateur).
-
-📦 Architecture
-
-Frontend : HTML, CSS, JavaScript
-
-Backend : PHP (XAMPP-ready, pas de base SQL lourde → stockage JSON)
-
-IA locale : Phi-3 Mini (via Ollama)
-
-Sécurité intégrée : proxy de gouvernance, filtrage contextuel, traçabilité
-
-🛠️ Dépendances principales
-
-Phi-3 Mini (MIT License, via Ollama)
-
-Bootstrap (MIT)
-
-jQuery (MIT)
-
-Chart.js (MIT)
-
-Font Awesome (MIT / CC BY 4.0)
-
-Dompdf (LGPL-2.1)
-
-Regex personnalisées (AGPLv3)
-
-Export PDF/CSV intégré
-
-🔐 Licences
-
-Le projet principal est sous AGPLv3.
-
-Les dépendances tierces sont utilisées sous leurs licences respectives :
-
-MIT (Bootstrap, jQuery, Chart.js, Font Awesome, Phi-3 Mini via Ollama)
-
-LGPL (Dompdf)
-
-CC BY 4.0 (Font Awesome – icônes spécifiques)
-
-Les fichiers de référence :
-
-/licenses/NOTICE.md
- : résumé des licences.
-
-/licenses/DEPENDENCIES.json
- : empreintes cryptographiques et détails des dépendances.
-
-🚀 Roadmap
-Community Edition (cette version)
-
-Base open source (AGPLv3).
-
-Gouvernance IA et conformité minimale.
-
-Logs + auditabilité intégrée.
-
-Contributions ouvertes (pull requests).
-
-Enterprise Edition (future, commerciale)
-
-Déploiement clé en main (cloud ou on-premise).
-
-Connecteurs avancés : SIEM, SOC, AD/LDAP, Microsoft 365, SAP, ServiceNow.
-
-Modules premium : reporting avancé, support SLA, certification, formation.
-
-SaaS Velixa : hébergement EU, mises à jour automatiques, monitoring intégré.
-
-🤝 Contribution
-
-Forkez le dépôt.
-
-Créez une branche (feature/ma-fonction).
-
-Committez vos changements.
-
-Ouvrez une pull request → review par les mainteneurs.
-
-Toutes les contributions doivent respecter :
-
-La licence AGPLv3.
-
-Les standards de conformité Velixa (RGPD, NIS 2, ISO 27001, HIPAA).
-
-📧 Contact
-
-Créateur - propriétaire de l'idée : Didier Crupaux
-Co-créateur : Jonathan Culot
-
-🌍 Site : https://velixa.eu
-
-✉️ Email : velixa@proton.me
-
-🔐 Licences
-
-Le projet principal est sous **AGPLv3**.
-
-Les dépendances tierces sont utilisées sous leurs licences respectives :  
-- MIT (Bootstrap, jQuery, Chart.js, Font Awesome, Phi-3 Mini via Ollama)  
-- LGPL (Dompdf, FontLib, SvgLib)  
-- CC BY 4.0 (Font Awesome – certaines icônes)  
-- Apache-2.0 (Tesseract OCR, futur module OCR)
-
-📄 Références :  
-- [`/licenses/NOTICE.md`](licenses/NOTICE.md) : résumé des licences et attributions.  
-- [`/licenses/DEPENDENCIES.json`](licenses/DEPENDENCIES.json) : empreintes cryptographiques des dépendances.  
-- [`/licenses/LICENSES_FULL.md`](licenses/LICENSES_FULL.md) : textes intégraux des licences.
-
-
+*Velixa for Gen AI — Governing AI with Confidence*
